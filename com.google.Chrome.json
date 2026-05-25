@@ -1,0 +1,152 @@
+{
+    "title": "Google Chrome Settings",
+    "description": "Domain: com.google.Chrome",
+    "properties": {
+        "CloudManagementEnrollmentMandatory": {
+            "title": "Enable mandatory cloud management enrollment",
+             "links": [
+                {
+                    "rel": "Documentation Link",
+                    "href": "https://cloud.google.com/docs/chrome-enterprise/policies/?policy=CloudManagementEnrollmentMandatory"
+                }
+            ],
+            "description": "If this policy is set to True, cloud management enrollment is mandatory and blocks Chrome launch process if failed",
+            "type": "boolean",
+            "default": "true"
+        },
+        "CloudManagementEnrollmentToken": {
+            "title": "Enrollment token of cloud policy",
+            "links": [
+                {
+                    "rel": "Documentation Link",
+                    "href": "https://cloud.google.com/docs/chrome-enterprise/policies/?policy=CloudManagementEnrollmentToken"
+                }
+            ],
+            "description": "If this policy is set, Google Chrome will try to register itself and apply associated cloud policy for all profiles",
+            "type": "string",
+            "options": {
+            "enum_titles": [
+                  "Group_01",
+                  "Group_02"
+            	]
+      		},
+      		"enum": [
+            	"abc123",
+	            "987zyx"
+      			]
+    		},
+        },
+        "CloudReportingEnabled": {
+            "title": "Enable Google Chrome Cloud Reporting",
+            "links": [
+                {
+                    "rel": "Documentation Link",
+                    "href": "https://cloud.google.com/docs/chrome-enterprise/policies/?policy=CloudReportingEnabled"
+                }
+            ],
+            "description": "This policy controls Google Chrome cloud reporting which uploads information about the browser operation to Google Admin console. When this policy is left unset or set to False, there is no data collected or uploaded. When this policy is set to True, the data is collected and uploaded to Google Admin console. For Google Chrome, this policy is only effective when the machine is enrolled with CloudManagementEnrollmentToken",
+            "type": "boolean",
+            "default": "true"
+        },
+        "DefaultBrowserSettingEnabled": {
+            "title": "Set Google Chrome as Default Browser",
+            "links": [
+                {
+                    "rel": "Documentation Link",
+                    "href": "https://cloud.google.com/docs/chrome-enterprise/policies/?policy=DefaultBrowserSettingEnabled"
+                }
+            ],
+            "description": "Setting the policy to True has Google Chrome always check whether it's the default browser on startup and, if possible, automatically register itself.",
+            "type": "boolean",
+            "default": "true"
+        },
+        "GeminiSettings": {
+            "title": "This setting allows Gemini app integrations.",
+            "links": [
+                {
+                    "rel": "Documentation Link",
+                    "href": "https://cloud.google.com/docs/chrome-enterprise/policies/?policy=GeminiSettings"
+                }
+            ],
+            "description": "0 = Allow Gemini integrations. 1 = Do not allow Gemini integrations.",
+            "type": "number",
+            "default": "0"
+        },
+        "LocalNetworkAccessAllowedForUrls": {
+    	    "title": "LocalNetworkAccessAllowedForUrls",
+    	    "links": [
+                {
+                    "rel": "Documentation Link",
+                    "href": "https://cloud.google.com/docs/chrome-enterprise/policies/?policy=LocalNetworkAccessAllowedForUrls"
+                }
+            ],
+        	"description": "Allow sites to make network requests to local devices and local network endpoints.",
+            "type": "array",
+            "default": [
+       	 		"https://acme.okta.com"
+    		]
+		},
+	    "PasswordManagerEnabled": {
+    		"title": "Enable saving passwords to the password manager",
+            "links": [
+                {
+                    "rel": "Documentation Link",
+                    "href": "https://cloud.google.com/docs/chrome-enterprise/policies/?policy=PasswordManagerEnabled"
+                }
+            ],
+            "description": "This policy controls the browser's ability to automatically remember passwords on websites and save them in the built-in password manager.",
+    		"type": "boolean", 
+    		"default": "false"
+    	},
+	    "AutoLaunchProtocolsFromOrigins": {
+    	    "title": "AutoLaunchProtocolsFromOrigins",
+    	    "links": [
+                {
+                    "rel": "Documentation Link",
+                    "href": "https://cloud.google.com/docs/chrome-enterprise/policies/?policy=AutoLaunchProtocolsFromOrigins"
+                }
+            ],
+        	"description": "If this policy is set, protocols can launch an external application without prompting the user. If this policy is not set, no protocols can launch without a prompt by default.",
+            "type": "array",
+            "items": {
+				"properties": {
+					"allowed_origins": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"protocol": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"protocol",
+					"allowed_origins"
+				],
+				"type": "object"
+ 			},
+ 			"default": [
+                {
+                    "protocol": "zoommtg",
+                    "allowed_origins": [
+                        "https://us02web.zoom.us",
+                        "https://acme.zoom.us"
+                    ]
+                },
+                {
+                    "protocol": "zoom.us.app",
+                    "allowed_origins": [
+                        "https://acme.zoom.us"
+                    ]
+                },
+                {
+                    "protocol": "com-okta-authenticator",
+                    "allowed_origins": [
+                        "https://acme.okta.com"
+                    ]
+                }
+            ]
+		}
+    }
+}
